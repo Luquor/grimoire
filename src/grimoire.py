@@ -3,6 +3,8 @@ from datetime import datetime
 import inspect
 import os.path
 from dataclasses import dataclass
+import sys
+
 
 class LogLevel(Enum):
     info = 1
@@ -19,7 +21,7 @@ class Logger:
         print(generate_log(LogLevel.warn, message))
 
     def error(self, message: str = '') -> None:
-        print(generate_log(LogLevel.error, message))
+        print(generate_log(LogLevel.error, message), file=sys.stder)
 
     def debug(self, message: str = '') -> None:
         print(generate_log(LogLevel.debug, message))
@@ -27,5 +29,5 @@ class Logger:
 
 def generate_log(log_level: LogLevel, message: str) -> str:
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    log = f'{{"timestamp": "{timestamp}", "level": "{log_level.name}", "source": "{os.path.splitext(os.path.basename(inspect.stack()[1].filename))[0]}.py", "message": "{message}"}}'
+    log = f'{{"timestamp": "{timestamp}", "level": "{log_level.name}", "source": "{os.path.splitext(os.path.basename(inspect.stack()[2].filename))[0]}.py", "message": "{message}"}}'
     return log
