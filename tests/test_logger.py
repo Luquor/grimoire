@@ -2,7 +2,7 @@ import pytest
 from unittest.mock import patch
 import json
 from datetime import datetime
-from src.grimoire import Logger, LogLevel
+from src.grimoire_logger.grimoire import Logger, LogLevel
 
 
 @pytest.fixture
