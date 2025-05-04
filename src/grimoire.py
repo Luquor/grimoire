@@ -21,7 +21,7 @@ class Logger:
         print(generate_log(LogLevel.warn, message))
 
     def error(self, message: str = '') -> None:
-        print(generate_log(LogLevel.error, message), file=sys.stder)
+        print(generate_log(LogLevel.error, message), file=sys.stderr)
 
     def debug(self, message: str = '') -> None:
         print(generate_log(LogLevel.debug, message))
