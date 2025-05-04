@@ -20,9 +20,6 @@ You can install Grimoire Logger by cloning this repository to a local place or
 by using `pip`:
 
 ```bash
-git clone https://github.com/luquor/grimoire.git
-cd grimoire
----
 pip install grimoire_logger
 ```
 
@@ -31,23 +28,24 @@ pip install grimoire_logger
 Here’s a quick example of how to use Grimoire Logger:
 
 ```python
-from grimoire import Logger
+from grimoire_logger import Logger
 
-logger = Logger()
+log = Logger()
 
-logger.info("This is an info message.")
-logger.warn("This is a warning message.")
-logger.error("This is an error message.")
-logger.debug("This is a debug message.")
+log.info("This is an info message")
+log.debug("This is a debug message")
+log.warn("This is a warning message")
+log.error("This is an error message")
 ```
 
-### Example Output
+This code will output the following:
 
 ```json
-{
-    "timestamp": "2023-10-01 12:34:56",
-    "level": "info",
-    "source": "example.py",
-    "message": "This is an info message."
-}
+$ python main.py
+{"timestamp": "2025-05-04 18:31:14", "level": "info", "source": "main.py", "message": "This is an info message"}
+{"timestamp": "2025-05-04 18:31:14", "level": "debug", "source": "main.py", "line": 6, "message": "This is a debug message"}
+{"timestamp": "2025-05-04 18:31:14", "level": "warn", "source": "main.py", "message": "This is a warning message"}
+{"timestamp": "2025-05-04 18:31:14", "level": "error", "source": "main.py", "message": "This is an error message"}
 ```
+
+It is a design purpose that only the debug level prints the line of thet caller.
